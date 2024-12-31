@@ -1,0 +1,11 @@
+{
+  "extends": "@repo/tsconfig/ui.json",
+  "include": ["**/*.ts", "**/*.tsx", "tailwind.config.ts"],
+  "exclude": ["dist", "build", "node_modules"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}

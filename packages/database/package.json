@@ -1,0 +1,39 @@
+{
+  "name": "@repo/database",
+  "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema/users": "./src/schema/users/index.ts",
+    "./schema/accounts": "./src/schema/accounts/index.ts",
+    "./schema/userSettings": "./src/schema/userSettings/index.ts",
+    "./schema/sessions": "./src/schema/sessions/index.ts",
+    "./schema/verificationTokens": "./src/schema/verificationTokens/index.ts",
+    "./schema/resetPasswordTokens": "./src/schema/resetPasswordTokens/index.ts",
+    "./schema/twoFactorTokens": "./src/schema/twoFactorTokens/index.ts",
+    "./schema/twoFactorConfirmations": "./src/schema/twoFactorConfirmations/index.ts"
+  },
+  "scripts": {
+    "seed": "tsx scripts/seed.ts",
+    "migrate": "drizzle-kit migrate",
+    "studio": "drizzle-kit studio",
+    "push": "drizzle-kit push",
+    "generate": "drizzle-kit generate:pg"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.38.3",
+    "drizzle-zod": "^0.5.1",
+    "pg": "^8.13.0",
+    "zod": "^3.24.1",
+    "@t3-oss/env-core": "^0.11.1"
+  },
+  "devDependencies": {
+    "@repo/tsconfig": "workspace:*",
+    "@types/node": "22.10.2",
+    "@types/pg": "^8.11.10",
+    "typescript": "^5.7.2",
+    "drizzle-kit": "^0.26.2"
+  }
+}
