@@ -6,14 +6,20 @@
   },
   "exports": {
     ".": "./src/index.ts",
-    "./schema/users": "./src/schema/users/index.ts",
+    "./schema/*": "./src/schema/**/index.ts",
     "./schema/accounts": "./src/schema/accounts/index.ts",
     "./schema/userSettings": "./src/schema/userSettings/index.ts",
     "./schema/sessions": "./src/schema/sessions/index.ts",
     "./schema/verificationTokens": "./src/schema/verificationTokens/index.ts",
     "./schema/resetPasswordTokens": "./src/schema/resetPasswordTokens/index.ts",
     "./schema/twoFactorTokens": "./src/schema/twoFactorTokens/index.ts",
-    "./schema/twoFactorConfirmations": "./src/schema/twoFactorConfirmations/index.ts"
+    "./schema/twoFactorConfirmations": "./src/schema/twoFactorConfirmations/index.ts",
+    "./schema/comments": "./src/schema/comments/index.ts",
+    "./schema/folders": "./src/schema/folders/index.ts",
+    "./schema/medias": "./src/schema/medias/index.ts",
+    "./schema/members": "./src/schema/members/index.ts",
+    "./schema/subscriptions": "./src/schema/subscriptions/index.ts",
+    "./schema/workspaces": "./src/schema/workspaces/index.ts"
   },
   "scripts": {
     "seed": "tsx scripts/seed.ts",
@@ -24,16 +30,16 @@
   },
   "dependencies": {
     "drizzle-orm": "^0.38.3",
-    "drizzle-zod": "^0.5.1",
-    "pg": "^8.13.0",
+    "drizzle-zod": "^0.6.1",
+    "pg": "^8.13.1",
     "zod": "^3.24.1",
     "@t3-oss/env-core": "^0.11.1"
   },
   "devDependencies": {
     "@repo/tsconfig": "workspace:*",
-    "@types/node": "22.10.2",
+    "@types/node": "22.10.3",
     "@types/pg": "^8.11.10",
     "typescript": "^5.7.2",
-    "drizzle-kit": "^0.26.2"
+    "drizzle-kit": "^0.30.1"
   }
 }
