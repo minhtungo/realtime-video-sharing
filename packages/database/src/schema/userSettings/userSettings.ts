@@ -1,7 +1,7 @@
-import { boolean, pgTable, text, uuid, varchar } from 'drizzle-orm/pg-core';
+import { boolean, pgTable, text, varchar } from 'drizzle-orm/pg-core';
 import { users } from '../users';
 
-export const userSettings = pgTable('userSetting', {
+export const userSettings = pgTable('userSettings', {
   id: text()
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),

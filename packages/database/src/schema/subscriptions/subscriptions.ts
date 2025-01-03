@@ -1,8 +1,8 @@
-import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp } from 'drizzle-orm/pg-core';
 import { subscriptionPlanEnum } from '../constants';
 import { users } from '../users';
 
-export const subscriptions = pgTable('subscription', {
+export const subscriptions = pgTable('subscriptions', {
   id: text()
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),

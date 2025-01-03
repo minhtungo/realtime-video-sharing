@@ -1,7 +1,7 @@
-import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp } from 'drizzle-orm/pg-core';
 import { users } from '../users';
 
-export const resetPasswordTokens = pgTable('resetPasswordToken', {
+export const resetPasswordTokens = pgTable('resetPasswordTokens', {
   id: text()
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),

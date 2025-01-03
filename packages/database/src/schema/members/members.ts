@@ -2,7 +2,7 @@ import { boolean, pgTable, text, timestamp } from 'drizzle-orm/pg-core';
 import { users } from '../users';
 import { workspaces } from '../workspaces';
 
-export const members = pgTable('member', {
+export const members = pgTable('members', {
   id: text()
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),

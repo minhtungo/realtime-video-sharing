@@ -1,7 +1,7 @@
-import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp } from 'drizzle-orm/pg-core';
 import { workspaces } from '../workspaces';
 
-export const folders = pgTable('folder', {
+export const folders = pgTable('folders', {
   id: text()
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),

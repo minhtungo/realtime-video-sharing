@@ -1,6 +1,6 @@
-import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp } from 'drizzle-orm/pg-core';
 
-export const twoFactorTokens = pgTable('twoFactorToken', {
+export const twoFactorTokens = pgTable('twoFactorTokens', {
   id: text()
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),

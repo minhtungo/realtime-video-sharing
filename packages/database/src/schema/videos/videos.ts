@@ -3,7 +3,7 @@ import { folders } from '../folders';
 import { users } from '../users';
 import { workspaces } from '../workspaces';
 
-export const videos = pgTable('video', {
+export const videos = pgTable('videos', {
   id: text()
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),

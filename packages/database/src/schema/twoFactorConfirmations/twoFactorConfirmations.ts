@@ -1,7 +1,7 @@
-import { pgTable, text, uuid } from 'drizzle-orm/pg-core';
+import { pgTable, text } from 'drizzle-orm/pg-core';
 import { users } from '../users';
 
-export const twoFactorConfirmations = pgTable('twoFactorConfirmation', {
+export const twoFactorConfirmations = pgTable('twoFactorConfirmations', {
   id: text()
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),

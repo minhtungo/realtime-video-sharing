@@ -1,8 +1,8 @@
-import { pgTable, text, uuid } from 'drizzle-orm/pg-core';
+import { pgTable, text } from 'drizzle-orm/pg-core';
 import { presetEnum } from '../constants';
 import { users } from '../users';
 
-export const medias = pgTable('media', {
+export const medias = pgTable('medias', {
   id: text()
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),

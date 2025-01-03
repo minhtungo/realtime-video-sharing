@@ -2,7 +2,7 @@ import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { workspaceTypeEnum } from '../constants';
 import { users } from '../users';
 
-export const workspaces = pgTable('workspace', {
+export const workspaces = pgTable('workspaces', {
   id: text()
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),

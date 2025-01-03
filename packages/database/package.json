@@ -6,7 +6,6 @@
   },
   "exports": {
     ".": "./src/index.ts",
-    "./schema/*": "./src/schema/**/index.ts",
     "./schema/accounts": "./src/schema/accounts/index.ts",
     "./schema/userSettings": "./src/schema/userSettings/index.ts",
     "./schema/sessions": "./src/schema/sessions/index.ts",
@@ -19,7 +18,8 @@
     "./schema/medias": "./src/schema/medias/index.ts",
     "./schema/members": "./src/schema/members/index.ts",
     "./schema/subscriptions": "./src/schema/subscriptions/index.ts",
-    "./schema/workspaces": "./src/schema/workspaces/index.ts"
+    "./schema/workspaces": "./src/schema/workspaces/index.ts",
+    "./schema/users": "./src/schema/users/index.ts"
   },
   "scripts": {
     "seed": "tsx scripts/seed.ts",
