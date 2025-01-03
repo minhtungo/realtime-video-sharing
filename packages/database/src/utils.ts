@@ -1,7 +1,5 @@
-import { db } from "./db";
+import { db } from '.';
 
-export async function createTransaction<T extends typeof db>(
-  cb: (trx: T) => void,
-) {
+export async function createTransaction<T extends typeof db>(cb: (trx: T) => void) {
   await db.transaction(cb as any);
 }

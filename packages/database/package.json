@@ -1,11 +1,9 @@
 {
   "name": "@repo/database",
   "version": "0.0.0",
-  "publishConfig": {
-    "access": "public"
-  },
   "exports": {
     ".": "./src/index.ts",
+    "./utils": "./src/utils.ts",
     "./schema/accounts": "./src/schema/accounts/index.ts",
     "./schema/userSettings": "./src/schema/userSettings/index.ts",
     "./schema/sessions": "./src/schema/sessions/index.ts",
@@ -37,7 +35,7 @@
   },
   "devDependencies": {
     "@repo/tsconfig": "workspace:*",
-    "@types/node": "22.10.3",
+    "@types/node": "22.10.5",
     "@types/pg": "^8.11.10",
     "typescript": "^5.7.2",
     "drizzle-kit": "^0.30.1"
