@@ -26,6 +26,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { z } from 'zod';
 import { workspaceRouter } from '@/modules/workspace/workspaceRouter';
+import { config } from '@/common/lib/config';
 
 extendZodWithOpenApi(z);
 
@@ -57,8 +58,8 @@ const sessionStore = new pgSession({
 
 app.use(
   session({
-    name: env.SESSION_COOKIE_NAME,
-    secret: env.SESSION_SECRET,
+    name: config.sessionCookie.name,
+    secret: config.sessionCookie.secret,
     genid: () => {
       return uuidv4();
     },
@@ -67,7 +68,7 @@ app.use(
     rolling: false,
     store: sessionStore,
     cookie: {
-      maxAge: env.SESSION_COOKIE_MAX_AGE,
+      maxAge: config.sessionCookie.maxAge,
       httpOnly: true,
       secure: env.NODE_ENV === 'production',
       sameSite: 'lax',

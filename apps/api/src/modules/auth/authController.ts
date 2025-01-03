@@ -4,6 +4,7 @@ import { handleServiceResponse } from '@/common/lib/httpHandlers';
 import { authService } from '@/modules/auth/authService';
 
 import { env } from '@/common/lib/env';
+import { logger } from '@/common/lib/logger';
 import { ServiceResponse } from '@/common/models/serviceResponse';
 import type { signUpProps } from '@repo/validation/auth';
 import { StatusCodes } from 'http-status-codes';
@@ -50,6 +51,8 @@ const forgotPassword: RequestHandler = async (req, res) => {
 const resetPassword: RequestHandler = async (req, res) => {
   const { password, token } = req.body;
 
+  console.log('resetPassword', req.body);
+
   const serviceResponse = await authService.resetPassword(token, password);
 
   return handleServiceResponse(serviceResponse, res);
@@ -95,13 +98,15 @@ const signOut: RequestHandler = async (req, res, next) => {
   //   });
   // });
 
-  req.logOut(async (err) => {
+  req.session.destroy(async (err) => {
     if (err) {
-      return next(err);
+      logger.error('Failed to destroy session:', err);
+      return res.status(500).send('Error logging out');
     }
 
+    // Clear the session cookie
+    res.clearCookie(env.SESSION_COOKIE_NAME); // 'connect.sid' is the default session cookie name
     const serviceResponse = await authService.signOut();
-
     return handleServiceResponse(serviceResponse, res);
   });
 };

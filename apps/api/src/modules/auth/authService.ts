@@ -24,6 +24,7 @@ const signIn = async () => {
 
 const signUp = async ({ email, name, password }: signUpProps): Promise<ServiceResponse<{ id: string } | null>> => {
   try {
+    console.log('signUp', email, name, password);
     const existingUser = await userRepository.getUserByEmail(email);
 
     if (existingUser) {
@@ -81,6 +82,7 @@ const signUp = async ({ email, name, password }: signUpProps): Promise<ServiceRe
       StatusCodes.OK
     );
   } catch (ex) {
+    console.log('signUp error', ex);
     return handleServiceError(ex as Error, 'Signing Up');
   }
 };
@@ -175,9 +177,9 @@ const forgotPassword = async (email: string): Promise<ServiceResponse<null>> => 
 
 const resetPassword = async (token: string, newPassword: string): Promise<ServiceResponse<null>> => {
   try {
-    const hashedToken = hashToken(token);
-    const existingToken = await authRepository.getResetPasswordTokenByToken(hashedToken);
-
+    const existingToken = await authRepository.getResetPasswordTokenByToken(token);
+    console.log('token', token);
+    console.log('existingToken', existingToken);
     if (!existingToken || existingToken.expires < new Date()) {
       return ServiceResponse.failure('Invalid or expired token ', null, StatusCodes.UNAUTHORIZED);
     }
@@ -186,7 +188,7 @@ const resetPassword = async (token: string, newPassword: string): Promise<Servic
 
     await createTransaction(async (trx) => {
       await userRepository.updatePassword({ userId, newPassword, trx });
-      await authRepository.deleteResetPasswordToken(hashedToken, trx);
+      await authRepository.deleteResetPasswordToken(token, trx);
     });
 
     return ServiceResponse.success<null>('Password changed successfully', null, StatusCodes.OK);
@@ -194,7 +196,6 @@ const resetPassword = async (token: string, newPassword: string): Promise<Servic
     return handleServiceError(ex as Error, 'Resetting Password');
   }
 };
-
 const verifyEmail = async (token: string): Promise<ServiceResponse<null>> => {
   try {
     const existingToken = await authRepository.getVerificationTokenByToken(token);
@@ -229,7 +230,6 @@ const verifyEmail = async (token: string): Promise<ServiceResponse<null>> => {
 
 const signOut = async (): Promise<ServiceResponse<null>> => {
   try {
-    // Verify the token belongs to the user
     return ServiceResponse.success<null>('Signed out', null, StatusCodes.OK);
   } catch (ex) {
     return handleServiceError(ex as Error, 'Signing Out');
