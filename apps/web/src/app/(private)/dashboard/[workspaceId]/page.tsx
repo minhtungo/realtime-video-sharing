@@ -1,7 +1,3 @@
-import React from 'react';
-
-const WorkspacePage = () => {
-  return <div>WorkspacePage</div>;
-};
-
-export default WorkspacePage;
+export default async function WorkspacePage({ params }: { params: Promise<{ workspaceId: string }> }) {
+  return <></>;
+}

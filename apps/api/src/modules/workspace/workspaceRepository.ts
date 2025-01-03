@@ -1,6 +1,6 @@
 import { db } from '@repo/database';
-import { workspaces } from '@repo/database/schema/workspaces';
-import type { InsertWorkspaces } from '@repo/database/schema/workspaces';
+import { type InsertWorkspaces, workspaces } from '@repo/database/schema/workspaces';
+import { eq } from 'drizzle-orm';
 
 const createWorkspace = async (data: InsertWorkspaces, trx: typeof db = db) => {
   const [workspace] = await trx.insert(workspaces).values(data).returning({
@@ -10,6 +10,15 @@ const createWorkspace = async (data: InsertWorkspaces, trx: typeof db = db) => {
   return workspace;
 };
 
+const getWorkspaceById = async (id: string) => {
+  const workspace = await db.query.workspaces.findFirst({
+    where: eq(workspaces.id, id),
+  });
+
+  return workspace;
+};
+
 export const workspaceRepository = {
   createWorkspace,
+  getWorkspaceById,
 };
