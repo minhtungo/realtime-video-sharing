@@ -1,5 +1,5 @@
-import { apiRoutes } from '@/config';
 import { apiClient } from '@/lib/api-client';
+import { apiRoutes } from '@/lib/config';
 import type { Session } from '@repo/validation/user';
 import { useQuery } from '@tanstack/react-query';
 

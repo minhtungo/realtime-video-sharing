@@ -1,4 +1,4 @@
-import { authRoutes } from '@/config';
+import { authRoutes } from '@/lib/config';
 import { useResetPasswordMutation } from '@/features/auth/api/mutations';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { commonValidations } from '@repo/validation/common';

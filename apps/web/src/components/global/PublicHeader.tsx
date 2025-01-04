@@ -1,7 +1,7 @@
 import SignOutButton from '@/components/SignOutButton';
 import ThemeToggle from '@/components/ThemeToggle';
 import Container from '@/components/layout/Container';
-import { authRoutes } from '@/config';
+import { authRoutes } from '@/lib/config';
 import { getCurrentUser } from '@/lib/auth';
 import { publicNavLinks } from '@/lib/navigation';
 import Link from 'next/link';

@@ -12,7 +12,7 @@ const verifyAccess: RequestHandler = async (req, res) => {
     return handleServiceResponse(ServiceResponse.failure('Unauthorized', null, StatusCodes.UNAUTHORIZED), res);
   }
 
-  const serviceResponse = await workspaceService.verifyWorkspaceAccess(workspaceId, userId);
+  const serviceResponse = await workspaceService.verifyAccess(workspaceId, userId);
   return handleServiceResponse(serviceResponse, res);
 };
 

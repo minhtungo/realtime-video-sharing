@@ -1,4 +1,4 @@
-import { apiRoutes } from '@/config';
+import { apiRoutes } from '@/lib/config';
 
 import { apiClient } from '@/lib/api-client';
 import type { ApiResponse } from '@repo/validation/api';

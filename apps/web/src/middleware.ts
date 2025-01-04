@@ -1,4 +1,4 @@
-import { afterLoginUrl, authRoutes, protectedRoutes } from '@/config';
+import { afterLoginUrl, authRoutes, protectedRoutes } from '@/lib/config';
 import { env } from '@/lib/env';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';

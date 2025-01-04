@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import { workspaceRepository } from './workspaceRepository';
 import { handleServiceError } from '@/common/lib/utils';
 
-const verifyWorkspaceAccess = async (workspaceId: string, userId: string) => {
+const verifyAccess = async (workspaceId: string, userId: string) => {
   try {
     const workspace = await workspaceRepository.getWorkspaceById(workspaceId);
 
@@ -22,5 +22,5 @@ const verifyWorkspaceAccess = async (workspaceId: string, userId: string) => {
 };
 
 export const workspaceService = {
-  verifyWorkspaceAccess,
+  verifyAccess,
 };
