@@ -26,5 +26,4 @@ export const env = cleanEnv(process.env, {
   // Session configuration
   SESSION_SECRET: str(),
   SESSION_COOKIE_NAME: str(),
-  SESSION_COOKIE_MAX_AGE: num(),
 });

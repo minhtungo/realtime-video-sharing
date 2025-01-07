@@ -11,7 +11,6 @@ import {
 } from '@repo/validation/auth';
 
 export const signUpService = async (values: signUpProps) => {
-  console.log('signUpService', values);
   const response = await apiClient.post(apiRoutes.auth.signUp, {
     body: values,
   });
