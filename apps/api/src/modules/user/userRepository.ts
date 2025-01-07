@@ -30,9 +30,12 @@ const createUserSettings = async (data: InsertUserSettings, trx: typeof db = db)
   await trx.insert(userSettings).values(data);
 };
 
-const getUserByEmail = async <T>(email: string, columns?: UserColumns) => {
+const getUserByEmail = async (email: string) => {
   const user = await db.query.users.findFirst({
     where: eq(users.email, email),
+    with: {
+      userSettings: true,
+    },
   });
 
   return user;
