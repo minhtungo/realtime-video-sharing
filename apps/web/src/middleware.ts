@@ -26,7 +26,6 @@ export async function middleware(req: NextRequest) {
   }
 
   if (!isProtectedRoute) {
-    console.log('not protected or auth route');
     return NextResponse.next();
   }
 

@@ -33,7 +33,6 @@ export const useResetPasswordForm = (token: string) => {
   });
 
   const onSubmit = async (values: z.infer<typeof resetPasswordFormSchema>) => {
-    console.log('values', values);
     resetPassword(
       { password: values.password, token },
       {

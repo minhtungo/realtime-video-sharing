@@ -1,4 +1,4 @@
-import { apiClient } from '@/lib/api-client';
+import { apiClient } from '@/lib/api';
 import { apiRoutes } from '@/lib/config';
 import { ApiResponse } from '@repo/validation/api';
 

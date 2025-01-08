@@ -213,7 +213,7 @@ const verifyEmail = async (token: string): Promise<ServiceResponse<null>> => {
       await authRepository.deleteVerificationToken(token, trx);
     });
 
-    return ServiceResponse.success<null>('Email verified', null, StatusCodes.OK);
+    return ServiceResponse.success<null>('Your email has been verified. You can now sign in.', null, StatusCodes.OK);
   } catch (ex) {
     return handleServiceError(ex as Error, 'Verifying Email');
   }

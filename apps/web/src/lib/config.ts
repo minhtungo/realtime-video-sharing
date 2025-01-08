@@ -35,12 +35,11 @@ export const apiRoutes = {
     resetPassword: '/auth/reset-password',
     sendVerificationEmail: '/auth/send-verification-email',
     refreshToken: '/auth/refresh-token',
-    session: '/auth/session',
   },
   user: {
-    getUserInfo: '/user',
-    updateUser: '/user',
-    changePassword: '/user/change-password',
+    getCurrentUser: '/user/me',
+    updateUser: '/user/me',
+    changePassword: '/user/me/change-password',
   },
   workspace: {
     verifyAccess: (workspaceId: string) => `/workspaces/${workspaceId}/verify-access`,
