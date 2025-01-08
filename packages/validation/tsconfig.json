@@ -2,7 +2,6 @@
   "extends": "@repo/tsconfig/base.json",
   "compilerOptions": {
     "outDir": "dist",
-    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },

@@ -4,5 +4,5 @@ import { workspaces } from './workspaces';
 export const insertWorkspacesSchema = createInsertSchema(workspaces);
 export const selectWorkspacesSchema = createSelectSchema(workspaces);
 
-export type InsertWorkspaces = typeof workspaces.$inferInsert;
-export type Workspaces = typeof workspaces.$inferSelect;
+export type InsertWorkspace = typeof workspaces.$inferInsert;
+export type Workspace = typeof workspaces.$inferSelect;

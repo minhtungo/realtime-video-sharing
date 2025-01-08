@@ -4,5 +4,5 @@ import { videos } from './videos';
 export const insertVideosSchema = createInsertSchema(videos);
 export const selectVideosSchema = createSelectSchema(videos);
 
-export type InsertVideos = typeof insertVideosSchema;
-export type Videos = typeof selectVideosSchema;
+export type InsertVideo = typeof videos.$inferInsert;
+export type Video = typeof videos.$inferSelect;

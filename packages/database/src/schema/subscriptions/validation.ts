@@ -1,8 +1,8 @@
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
 import { subscriptions } from './subscriptions';
 
-export type InsertSubscriptions = typeof subscriptions.$inferInsert;
-export type Subscriptions = typeof subscriptions.$inferSelect;
+export const insertSubscriptionSchema = createInsertSchema(subscriptions);
+export const selectSubscriptionSchema = createSelectSchema(subscriptions);
 
-export const insertSubscriptionsSchema = createInsertSchema(subscriptions);
-export const selectSubscriptionsSchema = createSelectSchema(subscriptions);
+export type InsertSubscription = typeof subscriptions.$inferInsert;
+export type Subscription = typeof subscriptions.$inferSelect;

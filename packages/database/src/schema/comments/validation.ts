@@ -1,8 +1,8 @@
 import { comments } from './comments';
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
 
-export type InsertComments = typeof comments.$inferInsert;
-export type Comments = typeof comments.$inferSelect;
+export const insertCommentSchema = createInsertSchema(comments);
+export const selectCommentSchema = createSelectSchema(comments);
 
-export const insertCommentsSchema = createInsertSchema(comments);
-export const selectCommentsSchema = createSelectSchema(comments);
+export type InsertComment = typeof comments.$inferInsert;
+export type Comment = typeof comments.$inferSelect;

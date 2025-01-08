@@ -1,8 +1,8 @@
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
 import { folders } from './folders';
 
-export const insertFoldersSchema = createInsertSchema(folders);
-export const selectFoldersSchema = createSelectSchema(folders);
+export const insertFolderSchema = createInsertSchema(folders);
+export const selectFolderSchema = createSelectSchema(folders);
 
-export type InsertFolders = typeof insertFoldersSchema;
-export type Folders = typeof selectFoldersSchema;
+export type InsertFolder = typeof folders.$inferInsert;
+export type Folder = typeof folders.$inferSelect;
