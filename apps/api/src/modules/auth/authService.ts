@@ -12,6 +12,8 @@ import { userRepository } from '@/modules/user/userRepository';
 import { createTransaction } from '@repo/database/utils';
 import type { signUpProps } from '@repo/validation/auth';
 import type { SessionUser } from '@repo/validation/user';
+import { subscriptionRepository } from '@/modules/subscription/subscriptionRepository';
+import { workspaceRepository } from '@/modules/workspace/workspaceRepository';
 
 const signUp = async ({ email, name, password }: signUpProps): Promise<ServiceResponse<{ id: string } | null>> => {
   try {
@@ -191,6 +193,7 @@ const resetPassword = async (token: string, newPassword: string): Promise<Servic
     return handleServiceError(ex as Error, 'Resetting Password');
   }
 };
+
 const verifyEmail = async (token: string): Promise<ServiceResponse<null>> => {
   try {
     const existingToken = await authRepository.getVerificationTokenByToken(token);
@@ -211,6 +214,8 @@ const verifyEmail = async (token: string): Promise<ServiceResponse<null>> => {
       );
 
       await authRepository.deleteVerificationToken(token, trx);
+      await subscriptionRepository.createSubscription(user.id, trx);
+      await workspaceRepository.createWorkspace(user.id, trx);
     });
 
     return ServiceResponse.success<null>('Your email has been verified. You can now sign in.', null, StatusCodes.OK);
